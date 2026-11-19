@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Device Check · Online Classroom</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Online Classroom"><span>51</span><b>Online Classroom</b></a>
+    <div class="top-actions">
+      <div class="language-switch" aria-label="Language"><button class="active" data-language="en" type="button">EN</button><button data-language="zh" type="button">中文</button></div>
+      <button class="help" id="showGuide" type="button"><i aria-hidden="true">?</i><span data-copy="help">Need help?</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="equipment-panel" aria-labelledby="equipmentTitle">
+      <aside class="equipment-sidebar">
+        <h2 id="equipmentTitle" data-copy="equipmentSettings">Device check</h2>
+        <nav aria-labelledby="equipmentTitle">
+          <ol class="equipment-steps">
+            <li><button data-step="camera" aria-current="step" type="button">
+              <span class="step-number" aria-hidden="true">1</span>
+              <span><b data-copy="camera">Camera</b><small data-step-status>Current step</small></span>
+            </button></li>
+            <li><button data-step="speaker" type="button">
+              <span class="step-number" aria-hidden="true">2</span>
+              <span><b data-copy="speaker">Speakers</b><small data-step-status>To check</small></span>
+            </button></li>
+            <li><button data-step="mic" type="button">
+              <span class="step-number" aria-hidden="true">3</span>
+              <span><b data-copy="mic">Microphone</b><small data-step-status>To check</small></span>
+            </button></li>
+          </ol>
+        </nav>
+      </aside>
+
+      <div class="equipment-content">
+        <section class="setting-view" data-view="camera" aria-labelledby="cameraTitle">
+          <p class="step-count" data-copy="count1">Step 1 of 3</p>
+          <h2 id="cameraTitle" tabindex="-1" data-copy="cameraTitle">Check your camera</h2>
+          <p class="step-intro" data-copy="cameraIntro">Turn on the camera you’ll use in class.</p>
+          <div class="check-grid">
+            <div class="check-box">
+              <div class="check-display video-preview">
+                <p data-copy="previewOff">Your live preview will appear here</p>
+                <video autoplay muted playsinline hidden></video>
+              </div>
+              <label class="device-select"><span data-copy="cameraDevice">Camera</span><select data-device="camera"></select></label>
+              <button class="secondary" data-test="camera" type="button" data-copy="startCamera">Turn on camera</button>
+            </div>
+            <aside class="check-example">
+              <strong class="example-title" data-copy="example">What success looks like</strong>
+              <div class="example-camera" aria-hidden="true"><div class="portrait"></div></div>
+              <p data-copy="cameraPass">You can see yourself clearly. Wave your hand and check that the picture moves with you.</p>
+            </aside>
+          </div>
+        </section>
+
+        <section class="setting-view" data-view="speaker" aria-labelledby="speakerTitle" hidden>
+          <p class="step-count" data-copy="count2">Step 2 of 3</p>
+          <h2 id="speakerTitle" tabindex="-1" data-copy="speakerTitle">Check your speakers or headphones</h2>
+          <p class="step-intro" data-copy="speakerIntro">Play a short sound through the device you’ll use in class.</p>
+          <div class="check-grid">
+            <div class="check-box">
+              <div class="check-display speaker-preview"><span aria-hidden="true">♫</span><p data-speaker-status data-copy="soundSample">Three-note test sound</p></div>
+              <label class="device-select"><span data-copy="speakerDevice">Audio output</span><select data-device="speaker"></select></label>
+              <button class="secondary" data-test="speaker" type="button" data-copy="playTest">Play test sound</button>
+              <audio preload="none"></audio>
+            </div>
+            <aside class="check-example">
+              <strong class="example-title" data-copy="example">What success looks like</strong>
+              <div class="example-notes" aria-hidden="true"><i>♪</i><i>♪</i><i>♪</i></div>
+              <p data-copy="speakerPass">You can hear all three notes clearly through the speakers or headphones you plan to use.</p>
+              <small data-copy="speakerTip">No sound? Turn up the volume or choose another output.</small>
+              <small data-output-hint data-copy="speakerDefault" hidden>To change output, use your system sound settings.</small>
+            </aside>
+          </div>
+        </section>
+
+        <section class="setting-view" data-view="mic" aria-labelledby="micTitle" hidden>
+          <p class="step-count" data-copy="count3">Step 3 of 3</p>
+          <h2 id="micTitle" tabindex="-1" data-copy="micTitle">Check your microphone</h2>
+          <p class="step-intro" data-copy="micIntro">Turn on your microphone and say “Hello” at a normal volume.</p>
+          <div class="check-grid">
+            <div class="check-box">
+              <div class="check-display mic-preview">
+                <p data-copy="liveLevel">Live input level</p>
+                <meter id="micLevel" min="0" max="1" value="0" aria-label="Live input level"></meter>
+              </div>
+              <label class="device-select"><span data-copy="micDevice">Microphone</span><select data-device="mic"></select></label>
+              <button class="secondary" data-test="mic" type="button" data-copy="startMic">Turn on microphone</button>
+            </div>
+            <aside class="check-example">
+              <strong class="example-title" data-copy="example">What success looks like</strong>
+              <div class="example-level"><span data-copy="quiet">Quiet</span><i aria-hidden="true"></i></div>
+              <div class="example-level speaking"><span data-copy="speaking">Speaking</span><i aria-hidden="true"></i></div>
+              <p data-copy="micPass">The bar rises when you speak and drops when you stop.</p>
+            </aside>
+          </div>
+        </section>
+
+        <div class="check-actions">
+          <p id="checkStatus" class="check-status" role="status"></p>
+          <label id="mirrorControl" class="mirror-control"><input id="mirrorToggle" type="checkbox" /><span data-copy="mirrorMode">Mirror video</span></label>
+        </div>
+        <footer class="equipment-footer">
+          <button class="text-button" id="backStep" type="button" data-copy="back" hidden>Back</button>
+          <button class="text-button skip-step" id="advanceStep" type="button" hidden><span id="advanceLabel">Skip for now</span></button>
+          <button class="confirm-step" id="confirmCheck" type="button"><span id="confirmLabel">Next step</span><span aria-hidden="true">→</span></button>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <dialog class="welcome-modal" id="welcomeModal" aria-labelledby="welcomeTitle">
+    <section class="modal-card">
+      <button class="modal-close" type="button" data-close-modal aria-label="Close">×</button>
+      <div class="modal-icon"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 15a3 3 0 0 0 3-3V7a3 3 0 1 0-6 0v5a3 3 0 0 0 3 3Zm6-3a6 6 0 0 1-12 0m6 6v3m-3 0h6M18 5l2 2 3-3"/></svg></div>
+      <span class="stage-label"><i></i><span data-copy="stage">Before you enter the classroom</span></span>
+      <h1 id="welcomeTitle" data-copy="title">Complete a quick device check</h1>
+      <p class="modal-subtitle" data-copy="subtitle">Check your camera, speakers, and microphone. Then select Enter Classroom to join your live class.</p>
+      <ol class="progress" aria-label="Classroom entry progress">
+        <li class="active"><span>1</span><div><b data-copy="stepOne">Device check</b><small data-copy="current">You are here</small></div></li>
+        <li class="connector"></li>
+        <li><span>2</span><div><b data-copy="stepTwo">Enter classroom</b><small data-copy="next">After you finish</small></div></li>
+      </ol>
+      <button class="start-check" type="button" data-close-modal autofocus><span data-copy="startCheck">Start Device Check</span><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m9 5 7 7-7 7"/></svg></button>
+    </section>
+  </dialog>
+
+  <div class="toast" role="status" hidden></div>
+  <script src="copy.js"></script>
+  <script src="media.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
